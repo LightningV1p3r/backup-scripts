@@ -1,0 +1,17 @@
+[paths]
+log_file = "backup.log"
+# Location of the borg repository
+borg_repo = ""
+# The path that will be backed up
+backup_location = ""
+# List of directories of every docker stack (compose.yaml location) to be shut down
+docker_locations = []
+
+[borg]
+# if the borg repo is encrypted: set to true. The passphrase will have to be put into the .env file 
+encrypted = true
+# if the borg repo is accessed remotly: set to true. The command will have to be put into the .env file 
+rsh = true
+
+[urls]
+healthcheck = "<url>"
