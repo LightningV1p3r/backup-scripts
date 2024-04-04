@@ -54,20 +54,20 @@ def execute_command(command, step, step_count, working_directory=None):
 
 def backup(remote, to_be_backed_up, step, step_count):
     command = f"/usr/bin/borg create --stats --compression zstd,11 {remote}::{now(True)} {to_be_backed_up}"
-    return execute_command(command, 2, 4)
+    return execute_command(command, step, step_count)
 
 
 def prune(remote, step, step_count):
     command = f"/usr/bin/borg prune -v --list --keep-last=2 {remote}"
-    return execute_command(command, 3, 4)
+    return execute_command(command, step, step_count)
 
 
 def stop_docker_stack(working_directory, step, step_count):
-    return execute_command("/usr/bin/docker compose down", 1, 4, working_directory=working_directory)
+    return execute_command("/usr/bin/docker compose down", step, step_count, working_directory=working_directory)
 
 
 def start_docker_stack(working_directory, step, step_count):
-    return execute_command("/usr/bin/docker compose up -d", 4, 4, working_directory=working_directory)
+    return execute_command("/usr/bin/docker compose up -d", step, step_count, working_directory=working_directory)
 
 
 if __name__ == "__main__":
