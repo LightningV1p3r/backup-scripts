@@ -1,0 +1,6 @@
+[paths]
+log_file = "backup.log"
+backup_dir = "<path>"
+
+[urls]
+healthcheck = "<url>"
